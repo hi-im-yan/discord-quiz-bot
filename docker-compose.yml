@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  quizz-app-db:
+    image: postgres:latest
+    container_name: postgres-container
+    environment:
+      POSTGRES_DB: docker
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+    ports:
+      - "5432:5432"

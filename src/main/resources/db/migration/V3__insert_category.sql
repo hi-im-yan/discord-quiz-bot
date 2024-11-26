@@ -1,0 +1,1 @@
+insert into category (name, description) values ('MATH', 'Math related questions')
