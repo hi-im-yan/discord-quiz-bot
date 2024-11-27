@@ -8,6 +8,7 @@ import discord4j.core.object.component.Button;
 import discord4j.core.object.component.SelectMenu;
 import discord4j.core.object.entity.channel.MessageChannel;
 import discord4j.core.object.reaction.ReactionEmoji;
+import discord4j.core.spec.EmbedCreateSpec;
 import discord4j.core.spec.MessageCreateSpec;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -52,24 +53,8 @@ public class StartQuizReaction implements Reaction {
         Button customEmoteButtonE = Button.primary(buttonE, optionEmojiE);
 
         return event.getInteraction().getChannel()
-                .flatMap(channel -> channel.createMessage(MessageCreateSpec.builder()
-                        // Buttons must be in action rows
-                        .content(String.format(
-                                """
-                                        Question: %s
-                                        A: %s
-                                        B: %s
-                                        C: %s
-                                        D: %s
-                                        E: %s""",
-                                question.getStatement(),
-                                question.getAlternativeA(),
-                                question.getAlternativeB(),
-                                question.getAlternativeC(),
-                                question.getAlternativeD(),
-                                question.getAlternativeE()
-                        ))
-                        .addComponent(ActionRow.of(customEmoteButtonA, customEmoteButtonB, customEmoteButtonC, customEmoteButtonD, customEmoteButtonE))
+                .flatMap(channel -> channel.createMessage(        EmbedCreateSpec.builder()
+                        .image("https://i.pinimg.com/236x/d5/c8/eb/d5c8ebdfa1eb3ec56d3c284577f3a1c6.jpg")
                         .build()))
                 .then();
     }
